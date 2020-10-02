@@ -6,3 +6,5 @@ This software aims to eliminate the possible side effects of inertial scrolling 
 
 ## block-scroll-mod-x11-gawk.sh
 This variant uses POSIX shell (`sh`), GNU awk (`gawk`) and `xinput` utility and some common Unix/Linux utilities to do the job. If you run it without arguments in terminal, usage will be shown.
+
+I have referred to this solution in my [answer](https://unix.stackexchange.com/a/612499/111181) to a *Unix & Linux Stack Exchange* question.
