@@ -89,7 +89,8 @@ trap '' HUP ALRM VTALRM PROF USR2
 trap 'exit 1' USR1
 
 { xinput test-xi2 --root 2>/dev/null || {
-	printf '%s\n%s\n' 'ERROR: "xinput test-xi2 --root" failed.' \
+	[ "$?" -eq 1 ] && printf '%s\n%s\n' \
+	'ERROR: "xinput test-xi2 --root" failed.' \
 	'Maybe another instance is running already.' >&2;
 	kill -s USR1 $$
 } } | gawk -l time -v keylist="$modkeys" '
