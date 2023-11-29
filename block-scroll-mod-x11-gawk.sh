@@ -6,9 +6,11 @@
 set -e
 export LC_ALL=C
 
-# NOTE: uses time extension for GNU awk. The extension will not work
-# after version 5.1, see
-# https://www.gnu.org/software/gawk/manual/html_node/Extension-Sample-Time.html
+# NOTE: uses time extension for GNU awk to have gettimeofday().
+# "For version 5.1, no warning will be issued if this extension is used.
+# For the next major release, a warning will be issued. In the release
+# after that this extension will be removed from the distribution."
+# https://web.archive.org/web/20220130102837/https://www.gnu.org/software/gawk/manual/html_node/Extension-Sample-Time.html
 
 # Check, if gettimeofday() is supported
 gawk -l time 'BEGIN{
