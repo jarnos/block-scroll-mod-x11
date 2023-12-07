@@ -130,4 +130,6 @@ BEGIN{
 		if(!paused && $2>=4)scrolltime=gettimeofday() # scroll event
 	}
 }
-' pointer="$pointer_id" delta="$delta"
+' pointer="$pointer_id" delta="$delta" &
+pid=$!
+wait
