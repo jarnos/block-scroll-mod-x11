@@ -6,6 +6,5 @@ This software aims to eliminate the possible side effects of inertial scrolling 
 
 **This master branch is reserved for C language implementation (or for some other language that has an XInput2 API).**
 
-See e.g. *gawk* branch for a solution using GNU awk.
+Hint: Check other branches for a solution that suits your system.
 
-My related QA site [answer](https://unix.stackexchange.com/a/612499/111181).
