@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # https://github.com/jarnos/block-scroll-mod-x11/tree/gawk
-# Author: Jarno Suni (http://iki.fi/8) 2020
+# Author: Jarno Suni (http://iki.fi/8) 2020, 2025
+# Does not work with xinput 1.6.4 or newer.
 
 set -e
 export LC_ALL=C
@@ -71,8 +72,7 @@ EOF
 }
 
 readonly pointer_id=pointer:"$1"
-# check validity
-xinput list --id-only "$pointer_id" >/dev/null
+id=(xinput list --id-only "$pointer_id")
 
 readonly modkeys="Shift_L,Shift_R,Caps_Lock,Control_L,Control_R,Alt_L,\
 Meta_L,Num_Lock,Super_L,Super_R,Super_L,Hyper_L,ISO_Level3_Shift,\
@@ -82,7 +82,7 @@ Mode_switch" # key symbols of modifiers
 revert() {
 	trap - EXIT
 	[ "${pid+x}" ] && kill $pid 2>/dev/null || :
-	xinput enable "$pointer_id"
+	xinput enable "$id"
 }
 trap 'revert' EXIT
 trap 'revert; trap - INT; kill -s INT $$' INT
@@ -130,6 +130,6 @@ BEGIN{
 		if(!paused && $2>=4)scrolltime=gettimeofday() # scroll event
 	}
 }
-' pointer="$pointer_id" delta="$delta" &
+' pointer="$id" delta="$delta" &
 pid=$!
 wait
