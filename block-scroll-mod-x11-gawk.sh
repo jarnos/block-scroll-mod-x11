@@ -28,7 +28,7 @@ while :; do
 			ok=t
 			[ "$2" ] && {
 				delta=$2
-				echo $delta | grep -Exq '[0-9]+|[0-9]*\.[0-9]+' || ok=
+				printf '%s' "$delta" | grep -Exq '[0-9]+|[0-9]*\.[0-9]+' || ok=
 				shift
 			} || ok=
 			[ "$ok" ] || {
@@ -72,7 +72,7 @@ EOF
 }
 
 readonly pointer_id=pointer:"$1"
-id=(xinput list --id-only "$pointer_id")
+id=$(xinput list --id-only "$pointer_id")
 
 readonly modkeys="Shift_L,Shift_R,Caps_Lock,Control_L,Control_R,Alt_L,\
 Meta_L,Num_Lock,Super_L,Super_R,Super_L,Hyper_L,ISO_Level3_Shift,\
