@@ -71,7 +71,6 @@ Mode_switch" # key symbols of modifiers
 revert() {
 	trap - EXIT
 	xinput enable "$id"
-	echo $(date) >>/tmp/date
 }
 trap 'revert' EXIT
 trap 'trap - TERM INT; kill -- $pid; sleep 1; revert' TERM INT
