@@ -44,6 +44,10 @@ done
 	cat >&2 <<EOF
 Usage: $0 [-d delta] pointer_device_name
 
+You can find the pointer device name of the device causing inertial
+scrolling in the output of command
+xinput list
+
 Default value of delta is $default_delta. Delta should be greater than
 the delay between sequential inertial scrolling events in 1/1000 seconds.
 
