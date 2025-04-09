@@ -55,7 +55,7 @@ You may run the following test script and scroll down to determine
 suitable minimum delta for your system:
 xinput --test-xi2 --root |
 awk -Winteractive '/RawButtonPress/{
-getline;getline;t=$2;if(ot){print t-ot};ot=t}'
+getline;getline;t=\$2;if(ot){print t-ot};ot=t}'
 EOF
 	exit 1
 }
